@@ -26,7 +26,7 @@ public final class LorePreset {
 
     @Nonnull
     public static String energyBuffer(int energy) {
-        return "&8\u21E8 &e\u26A1 &7" + format(energy) + " J Buffer";
+        return "&8\u21E8 &e\u26A1 &7" + format(energy) + " J 可储存";
     }
 
     @Nonnull
@@ -36,7 +36,7 @@ public final class LorePreset {
 
     @Nonnull
     public static String speed(int speed) {
-        return "&8\u21E8 &b\u26A1 &7Speed: &b" + speed + 'x';
+        return "&8\u21E8 &b\u26A1 &7速度: &b" + speed + 'x';
     }
 
     @Nonnull

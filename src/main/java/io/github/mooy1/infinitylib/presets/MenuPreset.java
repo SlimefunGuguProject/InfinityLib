@@ -13,34 +13,34 @@ public final class MenuPreset {
 
     public static final ItemStack BACKGROUND = ChestMenuUtils.getBackground();
     public static final ItemStack INVALID_INPUT = new CustomItem(
-            Material.BARRIER, "&cInvalid Input!"
+            Material.BARRIER, "&c无效输入!"
     );
     public static final ItemStack NO_INPUT = new CustomItem(
-            Material.BLUE_STAINED_GLASS_PANE, "&9Input an item"
+            Material.BLUE_STAINED_GLASS_PANE, "&9放入一个物品"
     );
     public static final ItemStack INVALID_RECIPE = new CustomItem(
-            Material.BARRIER, "&cInvalid Recipe!"
+            Material.BARRIER, "&c无效的配方!"
     );
     public static final ItemStack NO_ENERGY = new CustomItem(
-            Material.RED_STAINED_GLASS_PANE, "&cNot enough energy!"
+            Material.RED_STAINED_GLASS_PANE, "&c电力不足!"
     );
     public static final ItemStack NO_ROOM = new CustomItem(
-            Material.ORANGE_STAINED_GLASS_PANE, "&6Not enough room!"
+            Material.ORANGE_STAINED_GLASS_PANE, "&6空间不足!"
     );
     public static final ItemStack INPUT_ITEM = new CustomItem(
-            Material.BLUE_STAINED_GLASS_PANE, "&9Input"
+            Material.BLUE_STAINED_GLASS_PANE, "&9输入"
     );
     public static final ItemStack STATUS_ITEM = new CustomItem(
-            Material.CYAN_STAINED_GLASS_PANE, "&3Status"
+            Material.CYAN_STAINED_GLASS_PANE, "&3状态"
     );
     public static final ItemStack OUTPUT_ITEM = new CustomItem(
-            Material.ORANGE_STAINED_GLASS_PANE, "&6Output"
+            Material.ORANGE_STAINED_GLASS_PANE, "&6输出"
     );
     public static final ItemStack NO_NETWORK = new CustomItem(
-            Material.RED_STAINED_GLASS_PANE, "&cConnect to an energy network!"
+            Material.RED_STAINED_GLASS_PANE, "&c需要连接到能源网络!"
     );
     public static final ItemStack LOADING = new CustomItem(
-            Material.RED_STAINED_GLASS_PANE, "&cLoading..."
+            Material.RED_STAINED_GLASS_PANE, "&c加载中..."
     );
     public static final int INPUT = 10;
     public static final int[] INPUT_BORDER = {

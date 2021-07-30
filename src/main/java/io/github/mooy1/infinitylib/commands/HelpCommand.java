@@ -23,12 +23,12 @@ final class HelpCommand extends AbstractCommand implements Listener {
     private final String aliases;
 
     HelpCommand(List<AbstractCommand> subCommands, PluginCommand command) {
-        super("help", "Displays this", false);
+        super("help", "显示此帮助", false);
         this.subCommands = subCommands;
         this.help = "/help " + command.getName();
         this.command = ChatColor.GOLD + "/" + command.getName() + " ";
-        this.aliases = ChatColors.color("&6Aliases: &e" + command.getAliases());
-        this.header = ChatColors.color("&7----------&b " + command.getPlugin().getName() + " Help &7----------");
+        this.aliases = ChatColors.color("&6指令可用别名: &e" + command.getAliases());
+        this.header = ChatColors.color("&7----------&b " + command.getPlugin().getName() + " 帮助 &7----------");
 
         Bukkit.getPluginManager().registerEvents(this, command.getPlugin());
     }
