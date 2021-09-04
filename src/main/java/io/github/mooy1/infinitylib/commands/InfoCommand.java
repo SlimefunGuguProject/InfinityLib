@@ -3,18 +3,21 @@ package io.github.mooy1.infinitylib.commands;
 import java.util.List;
 import java.util.Objects;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import org.bukkit.command.CommandSender;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.common.ChatColors;
 
+@ParametersAreNonnullByDefault
 final class InfoCommand extends SubCommand {
 
     private final String[] message;
 
     InfoCommand(SlimefunAddon addon) {
-        super("info", "Gives addon and machines version and discord links");
+        super("info", "显示Slimefun本体与附属插件的版本信息，以及discord服务器");
         message = new String[] {
                 "",
                 ChatColors.color("&b" + addon.getName() + " 信息"),
