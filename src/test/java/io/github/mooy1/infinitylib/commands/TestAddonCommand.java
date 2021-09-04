@@ -86,8 +86,8 @@ class TestAddonCommand {
     @Test
     void testDefaultCommands() {
         PlayerMock p = server.addPlayer();
-        Assertions.assertTrue(getResponse(p, command, "info").contains("Info"));
-        Assertions.assertTrue(getResponse(p, command, "aliases").contains("Aliases"));
+        Assertions.assertTrue(getResponse(p, command, "info").contains("信息"));
+        Assertions.assertTrue(getResponse(p, command, "aliases").contains("别名"));
     }
 
     @Test
@@ -134,7 +134,7 @@ class TestAddonCommand {
         String help1 = getResponse(p, command);
         String help2 = getResponse(p, command, help);
 
-        Assertions.assertTrue(help1.contains("Help"));
+        Assertions.assertTrue(help1.contains("帮助"));
         Assertions.assertEquals(help1, help2);
     }
 
