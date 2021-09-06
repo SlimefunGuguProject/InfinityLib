@@ -66,7 +66,7 @@ public abstract class AbstractAddon extends JavaPlugin implements SlimefunAddon 
     /**
      * Addon Testing Constructor
      */
-    protected AbstractAddon(JavaPluginLoader loader, PluginDescriptionFile description, File dataFolder, File file,
+    public AbstractAddon(JavaPluginLoader loader, PluginDescriptionFile description, File dataFolder, File file,
                             String githubUserName, String githubRepo, String autoUpdateBranch, String autoUpdateKey) {
         this(loader, description, dataFolder, file, githubUserName, githubRepo, autoUpdateBranch, autoUpdateKey, Environment.TESTING);
     }
@@ -89,12 +89,14 @@ public abstract class AbstractAddon extends JavaPlugin implements SlimefunAddon 
     }
 
     private void validate() {
-        if (environment == Environment.LIVE && InfinityLib.PACKAGE.contains("mooy1.infinitylib")) {
-            throw new IllegalStateException("You must relocate InfinityLib to your own package!");
-        }
-        String addonPackage = getClass().getPackage().getName();
-        if (!addonPackage.contains(InfinityLib.ADDON_PACKAGE)) {
-            throw new IllegalStateException("Shade and relocate your own InfinityLib!");
+        if (environment == Environment.LIVE) {
+            if (InfinityLib.PACKAGE.contains("mooy1.infinitylib")) {
+                throw new IllegalStateException("You must relocate InfinityLib to your own package!");
+            }
+            String addonPackage = getClass().getPackage().getName();
+            if (!addonPackage.contains(InfinityLib.ADDON_PACKAGE)) {
+                throw new IllegalStateException("Shade and relocate your own InfinityLib!");
+            }
         }
         if (instance != null) {
             throw new IllegalStateException("Addon " + instance.getName() + " is already using this InfinityLib, Shade an relocate your own!");

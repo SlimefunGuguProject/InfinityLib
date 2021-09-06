@@ -1,7 +1,6 @@
 package io.github.mooy1.infinitylib.commands;
 
 import java.util.List;
-import java.util.Objects;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -18,10 +17,11 @@ final class InfoCommand extends SubCommand {
 
     InfoCommand(SlimefunAddon addon) {
         super("info", "显示附属插件与Slimefun的版本信息，以及discord服务器");
+        Slimefun slimefun = Slimefun.instance();
         message = new String[] {
                 "",
                 ChatColors.color("&b" + addon.getName() + " 信息"),
-                ChatColors.color("&bSlimefun 版本: &7" + Objects.requireNonNull(Slimefun.instance()).getPluginVersion()),
+                ChatColors.color("&bSlimefun 版本: &7" + (slimefun == null ? "null" : slimefun.getPluginVersion())),
                 ChatColors.color("&bSlimefun Discord: &7Discord.gg/slimefun"),
                 ChatColors.color("&b附属插件 版本: &7" + addon.getPluginVersion()),
                 ChatColors.color("&b附属社区 Discord: &7Discord.gg/SqD3gg5SAU"),
