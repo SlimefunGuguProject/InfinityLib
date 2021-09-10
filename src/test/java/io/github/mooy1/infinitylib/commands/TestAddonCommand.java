@@ -6,7 +6,6 @@ import java.util.Objects;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +14,11 @@ import be.seeseemelk.mockbukkit.ServerMock;
 import be.seeseemelk.mockbukkit.entity.PlayerMock;
 import io.github.mooy1.infinitylib.core.AbstractAddon;
 import io.github.mooy1.infinitylib.core.MockAddon;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TestAddonCommand {
 
@@ -41,27 +45,27 @@ class TestAddonCommand {
 
     @Test
     void testNoSuchCommand() {
-        Assertions.assertThrows(NullPointerException.class, () -> new AddonCommand("fail"));
+        assertThrows(NullPointerException.class, () -> new AddonCommand("fail"));
     }
 
     @Test
     void testAddParentToChildCommand() {
         ParentCommand child = new ParentCommand("child", "");
         ParentCommand parent = new ParentCommand("parent", "").addSub(child);
-        Assertions.assertThrows(IllegalArgumentException.class, () -> child.addSub(parent));
+        assertThrows(IllegalArgumentException.class, () -> child.addSub(parent));
     }
 
     @Test
     void testAddSubCommandToSelf() {
         ParentCommand parent = new ParentCommand("parent", "");
-        Assertions.assertThrows(IllegalArgumentException.class, () -> parent.addSub(parent));
+        assertThrows(IllegalArgumentException.class, () -> parent.addSub(parent));
     }
 
     @Test
     void testDuplicateSubCommand() {
         ParentCommand child = new ParentCommand("child", "");
         ParentCommand parent = new ParentCommand("parent", "").addSub(child);
-        Assertions.assertThrows(IllegalArgumentException.class, () -> parent.addSub(child));
+        assertThrows(IllegalArgumentException.class, () -> parent.addSub(child));
     }
 
     @Test
@@ -86,8 +90,8 @@ class TestAddonCommand {
     @Test
     void testDefaultCommands() {
         PlayerMock p = server.addPlayer();
-        Assertions.assertTrue(getResponse(p, command, "info").contains("信息"));
-        Assertions.assertTrue(getResponse(p, command, "aliases").contains("别名"));
+        assertTrue(getResponse(p, command, "info").contains("信息"));
+        assertTrue(getResponse(p, command, "aliases").contains("别名"));
     }
 
     @Test
@@ -96,13 +100,13 @@ class TestAddonCommand {
         addonCommand.addSub(new MockSubCommand("op", true));
 
         PlayerMock p = server.addPlayer();
-        Assertions.assertFalse(getResponse(p, command).contains(op));
+        assertFalse(getResponse(p, command).contains(op));
         assertNoResponse(p, op);
         assertNoCompletion(p, op);
         assertNoCompletion(p, op, op);
 
         p.setOp(true);
-        Assertions.assertTrue(getResponse(p, command).contains(op));
+        assertTrue(getResponse(p, command).contains(op));
         assertResponse(p, op);
         assertCompletion(p, op);
         assertCompletion(p, op, op);
@@ -114,13 +118,13 @@ class TestAddonCommand {
         addonCommand.addSub(new MockSubCommand(perm, perm));
 
         PlayerMock p = server.addPlayer();
-        Assertions.assertFalse(getResponse(p, command).contains(perm));
+        assertFalse(getResponse(p, command).contains(perm));
         assertNoResponse(p, perm);
         assertNoCompletion(p, perm);
         assertNoCompletion(p, perm, perm);
 
         p.addAttachment(AbstractAddon.instance()).setPermission(perm, true);
-        Assertions.assertTrue(getResponse(p, command).contains(perm));
+        assertTrue(getResponse(p, command).contains(perm));
         assertResponse(p, perm);
         assertCompletion(p, perm);
         assertCompletion(p, perm, perm);
@@ -134,8 +138,8 @@ class TestAddonCommand {
         String help1 = getResponse(p, command);
         String help2 = getResponse(p, command, help);
 
-        Assertions.assertTrue(help1.contains("帮助"));
-        Assertions.assertEquals(help1, help2);
+        assertTrue(help1.contains("帮助"));
+        assertEquals(help1, help2);
     }
 
     private static String getResponse(PlayerMock p, String... args) {
@@ -157,11 +161,11 @@ class TestAddonCommand {
     }
 
     private static void assertCompletion(CommandSender sender, String completion, String... args) {
-        Assertions.assertTrue(completions(sender, args).contains(completion));
+        assertTrue(completions(sender, args).contains(completion));
     }
 
     private static void assertNoCompletion(CommandSender sender, String completion, String... args) {
-        Assertions.assertFalse(completions(sender, args).contains(completion));
+        assertFalse(completions(sender, args).contains(completion));
     }
 
     private static List<String> completions(CommandSender sender, String... args) {
