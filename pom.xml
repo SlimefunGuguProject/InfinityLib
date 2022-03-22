@@ -79,7 +79,7 @@
         <dependency>
             <groupId>net.guizhanss</groupId>
             <artifactId>GuizhanLib</artifactId>
-            <version>0.6.1</version>
+            <version>0cb576f63a</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
@@ -157,6 +157,7 @@
                             <artifact>*:*</artifact>
                             <excludes>
                                 <exclude>META-INF/*</exclude>
+                                <exclude>minecraft.*.json</exclude>
                             </excludes>
                         </filter>
                     </filters>
