@@ -7,10 +7,11 @@ on:
     paths:
       - 'src/**'
       - 'pom.xml'
+  workflow_dispatch:
 
 jobs:
   release:
-    if: github.repository_owner == 'ybw0014'
+    if: github.repository_owner == 'SlimefunGuguProject'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
